@@ -8,7 +8,11 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
+<<<<<<< HEAD
         "laravel/reverb": "^1.0",
+=======
+        "laravel/reverb": "*",
+>>>>>>> 303b497 (inicializando repo local)
         "laravel/tinker": "^2.10.1"
     },
     "require-dev": {

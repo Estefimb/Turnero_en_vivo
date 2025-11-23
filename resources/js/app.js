@@ -1,4 +1,7 @@
 import './bootstrap';
+import "./chat"; 
+window.APP_LOADED = true;
+
 import Echo from 'laravel-echo';
 
 window.Echo = new Echo({
@@ -7,10 +10,10 @@ window.Echo = new Echo({
     wsHost: import.meta.env.VITE_REVERB_HOST,
     wsPort: import.meta.env.VITE_REVERB_PORT,
     forceTLS: false,
-    enabledTransports: ['ws'],
+    enabledTransports: ['ws','wss'],
 });
 
-window.Echo.channel('chat')
+window.Echo.channel('mchat')
     .listen('.message.posted', (e) => {
         const div = document.getElementById('messages');
         div.innerHTML += `<p><b>${e.user}:</b> ${e.content}</p>`;
