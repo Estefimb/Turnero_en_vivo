@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 
-Route::get('/', [ChatController::class, 'index']);
+Route::get('/', [ChatController::class, 'index'])->name('chat.index');
 Route::post('/messages', [ChatController::class, 'store'])->name('chat.store');
 
 

@@ -10,7 +10,9 @@
     .msg { padding: 8px 0; border-bottom: 1px solid #eee; } 
     .msg:last-child { border-bottom: none; } 
     .meta { font-size: 12px; opacity: 0.7; } 
-    .row { display: flex; gap: 8px; margin-top: 12px; }     input, button { padding: 10px 12px; border-radius: 8px; border: 1px solid #ccc; }     button { cursor: pointer; } 
+    .row { display: flex; gap: 8px; margin-top: 12px; }     
+    input, button { padding: 10px 12px; border-radius: 8px; border: 1px solid #ccc; }     
+    button { cursor: pointer; } 
   </style> 
 </head> 
 <body> 
@@ -27,16 +29,23 @@
   </div> 
  
   <div class="row"> 
-    <input id="user" type="text" placeholder="Tu nombre (opcional)" />     <input id="content" type="text" placeholder="Escribe tu mensaje..." style="flex:1" /> 
+    <input id="user" type="text" placeholder="Tu nombre (opcional)" />    
+    <input id="content" type="text" placeholder="Escribe tu mensaje..." style="flex:1" /> 
     <button id="send">Enviar</button> 
   </div> 
 </div> 
  
 <script> document.getElementById('send').addEventListener('click', async () => { 
-  const user = document.getElementById('user').value;   const content = document.getElementById('content').value.trim();   if (!content) return; 
+  const user = document.getElementById('user').value;   
+  const content = document.getElementById('content').value.trim();   
+  if (!content) return; 
  
-  const res = await fetch('{{ route('chat.store') }}', {     method: 'POST',     headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },     body: JSON.stringify({ user, content }) 
-  });   if (res.ok) document.getElementById('content').value = ''; }); 
+  const res = await fetch('{{ route('chat.store') }}', {     method: 'POST',     
+  headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },     
+  body: JSON.stringify({ user, content }) 
+  });   
+  if (res.ok) document.getElementById('content').value = ''; 
+  }); 
 </script> 
 </body> 
 </html> 
